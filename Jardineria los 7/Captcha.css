@@ -17,15 +17,6 @@ body{
   min-height: 100vh;
   background: #4db2ec;
 }
-.wrapper{
-  max-width: 485px;
-  width: 100%;
-  background: #fff;
-  padding: 22px 30px 40px;
-  border-radius: 10px;
-  box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.05);
-}
-
 .wrapper header{
   color: #4db2ec;
   font-size: 33px;
@@ -165,6 +156,6 @@ body{
     font-size: 15px;
   }
   .captcha-area .captcha-img{
-    width: 250px;
+    width: 2500px;
   }
 }
