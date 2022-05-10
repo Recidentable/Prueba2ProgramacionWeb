@@ -5,64 +5,115 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="estilo_formulario.css">
     <title>Registro_de_usuario</title>
 
-<script type="text/javascript">
-    $(document).ready(function() {
-        $("#error").hide();
+    <script type="text/javascript">
+        $(document).ready(function() {
 
-        $("#formulario").submit(function(){
-            var mensaje = "";
-            var pass1 = document.getElementById("contraseña");
-            var pass2 = document.getElementById("repetircontraseña");
-
-            if($("#nombre").val().trim().lenght==0){
-                mensaje = "El nombre está en blanco";
+            function mostrarMensajeError(claseInput, mensaje){
+                var entrada = document.querySelector(`.${claseInput}`);
+                entrada.lastElementChild.innerHTML = mensaje;
             }
+    
+            $("#Enviar").click(function(){
+                var mensaje = "";
+                var nombre = document.getElementById("nombre");
+                var email = document.getElementById("email");
+                var rut = document.getElementById("rut");
+                var pass1 = document.getElementById("contraseña");
+                var pass2 = document.getElementById("repetircontraseña");
 
-            if($("#email").val().trim.lenght==0){
-                mensaje = "El email está en blanco";
-            }
-
-
-
-        });
-
-    })
-</script>
-
-
+                if(nombre.val.lenght < 1 || nombre.val.lenght == ""){
+                    mostrarMensajeError("nombre", "Nombre inválido")
+                }
+    
+                if($("#nombre").val().trim().lenght==0){
+                    mensaje = "El nombre está en blanco";
+                }
+    
+                if($("#email").val().trim.lenght==0){
+                    mensaje = "El email está en blanco";
+                }
+                
+                if(pass1.val() != pass2.val()){
+                    mostrarMensajeError("repetircontraseña", "Las contraseñas no coinciden");
+                }
+    
+    
+            });
+    
+        })
+    </script>
 
 </head>
 <body>
-    <div class="container-fluid">
-        <form id="formulario">
-            <div class="form-group">
+
+    <nav class="navbar navbar-expand-lg navbar-light " style="background-color:yellowgreen;">
+        <div class="container-fluid ">
+          <a class="navbar-brand" href="Jardineria.html">
+           <img src="Imagenes/logo.jpg" alt=""> Jardinería "los 7"</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="Jardineria.html">Inicio</a>
+              </li>             
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Productos
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="Maceteros.html">Maceteros</a></li>
+                  <li><a class="dropdown-item" href="Flores.html">Flores</a></li>
+                  <li><a class="dropdown-item" href="Fertilizantes.html">Tierra de hojas</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="Registro_usuario.html">Registro</a>
+              </li>            
+            </ul>
+          </div>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <form action="" class="form">
+            <p class="form-titulo">¡Regístrate!</p>
+            <div class="form-group Nombre">
+                <input type="text" name="nombre" id="nombre" placeholder="Ingrese nombre">
                 <label for="nombre">Nombre</label>
-                <input type="text" class="form-control" name="Nombre" id="nombre" placeholder="Ingrese nombre"><br>
+                <p class="mensajeError"></p>
             </div>
-            <div class="form-group">
+            <div class="form-group Email">
+                <input type="email" name="email" id="email" placeholder="Ingrese Email">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" name="email" id="email" placeholder="Ingrese Email"><br>
+                <p class="mensajeError"></p>
             </div>
-            <div class="form-group">
+            <div class="form-group Rut">
+                <input type="text" name="rut" id="rut" placeholder="Ingrese rut">
                 <label for="rut">Rut</label>
-                <input type="text" class="form-control" name="rut" id="rut" required placeholder="Ingrese rut">
-                <div id="ayudarut">Debe contener puntos y guión.</div><br>
+                <p class="mensajeError"></p>
             </div>
-            <div class="form-group">
+            <div class="form-group Contraseña">
+                <input type="password" name="contraseña" id="contraseña" placeholder="Ingrese contraseña">
                 <label for="contraseña">Ingrese Contraseña</label>
-                <input type="password" class="form-control" name="contraseña" id="contraseña" placeholder="Ingrese contraseña">
-                <div id="passRules" class="form-text">Debe contener al menos 6 carácteres y un número.</div><br>
-                <label for="repetircontraseña">Repita contraseña</label>
-                <input type="password" class="form-control" name="repetircontraseña" id="repetircontraseña" placeholder="Repita contraseña">
-                <div id="ayudacontraseña">Las contraseñas deben coincidir</div><br>
+                <p class="mensajeError"></p>
             </div>
-            <input type="submit" class="btn btn-danger" id="enviar" value="Enviar">
-            <div id="error" class="alert alert-danger" role="alert"></div>
+            <div class="form-group RepetirContraseña">
+                <input type="password" name="repetircontraseña" id="repetircontraseña" placeholder="Repita contraseña">
+                <label for="repetircontraseña">Repita contraseña</label>
+                <p class="mensajeError"></p>
+            </div>
+            <div class="form-boton">
+                <input type="submit" id="Enviar">
+            </div>
+            <p class="mensajeExito"></p>
         </form>
     </div>
-
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
