@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="Diseño.css">
+    <link rel="stylesheet" href="Producto.html">
+    <title>api request</title>
+  </head>
+  <body>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light " style="background-color:darkslategray;">
+        <div class="container-fluid ">
+          <a class="navbar-brand" href="#">
+           <img src="Imagenes/Logo.jfif" alt=""> TusImagenes</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                
+                <a class="btn btn-primary"  href="Producto.html" role="button">Productos</a>
+              </li>             
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Formulario</a>
+              </li>      
+                </ul>
+              </li>            
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    <a class="btn btn-primary" id="ficha" href="#" role="button">Cargar ficha</a>  
+    <div class="container">
+        <div class="row">
+            <table class="table" id="categorias">
+                <thead>
+                    <tr>
+                        <th scope="col">Imagen</th>
+                        <th scope="col">Ancho</th>
+                        <th scope="col">Altura</th>
+                        <th scope="col">Fotógrafo</th>
+                        <th scope="col">Página fotógrafo</th>
+                        <th scope="col">Página Imagen</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+ 
+    <!-- Optional Javacript; choose one of the two! -->
+ 
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <script>
+     
+      $(document).ready(function(){
+        var api_key ="563492ad6f91700001000001470c8c910ad74646b5a4949f92f3ba63"
+        
+      })
+        $("#ficha").click(function(){
+          
+            $.get("https://api.pexels.com/v1/search?query=people", 
+                function(data){
+                    $.each(data.photos, function(i, item){
+                        $("#categorias").append("<tr><td><img src='" + item.src.tiny + "'>"  +  "</td><td>" +item.width + "</td><td>" + item.height + "</td><td>" +item.photographer + "</td><td>" +item.photographer_url + "</td><td>" +item.url +"</td></tr>")
+                    });
+                    
+                });
+
+        });
+
+      
+
+
+    </script>
+  </body>
+</html>
