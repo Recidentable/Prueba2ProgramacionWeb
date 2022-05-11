@@ -1,7 +1,7 @@
 // Capturando el DIV alerta y mensaje
 $(document).ready(function(){
     var alerta = document.getElementById("alerta");
-    var mensaje = document.getElementById("mensaje");
+    var mensaje = document.getElementById("mensajeError");
 })
 
 
@@ -33,7 +33,7 @@ function checkRut(rut) {
 
   // Si no cumple con el mínimo ej. (n.nnn.nnn)
   if (cuerpo.length < 7) {
-    rut.setCustomValidity("RUT Incompleto");
+    //rut.setCustomValidity("RUT Incompleto");
     alerta.classList.remove('alert-success', 'alert-danger');
     alerta.classList.add('alert-info');
     mensaje.innerHTML = 'Ingresó un RUT muy corto, el RUT debe ser mayor a 7 Dígitos. Ej: x.xxx.xxx-x';
@@ -69,7 +69,7 @@ function checkRut(rut) {
 
   // Validar que el Cuerpo coincide con su Dígito Verificador
   if (dvEsperado != dv) {
-    rut.setCustomValidity("RUT Inválido");
+    //rut.setCustomValidity("RUT Inválido");
 
     alerta.classList.remove('alert-info', 'alert-success');
     alerta.classList.add('alert-danger');
@@ -77,7 +77,7 @@ function checkRut(rut) {
 
     return false;
   } else {
-    rut.setCustomValidity("RUT Válido");
+    //rut.setCustomValidity("RUT Válido");
 
     alerta.classList.remove('d-none', 'alert-danger');
     alerta.classList.add('alert-success');

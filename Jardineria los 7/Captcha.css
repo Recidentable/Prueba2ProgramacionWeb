@@ -1,6 +1,6 @@
 /* Import Google font - Poppins & Noto */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital@1&family=Poppins:wght@400;500;600&display=swap');
-*{
+/**{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -16,7 +16,7 @@ body{
   justify-content: center;
   min-height: 100vh;
   background: #4db2ec;
-}
+}*/
 .wrapper header{
   color: #4db2ec;
   font-size: 33px;
